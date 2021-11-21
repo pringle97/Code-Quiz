@@ -146,19 +146,18 @@ const submitScore = document.getElementById('submitScore')
   document.getElementById('submitScore').addEventListener('click', event => {
     event.preventDefault()
     // let usernames = document.getElementById('usernames')
-    let scores = JSON.parse(localStorage.getItem('scores')) || []
-    let usernames = JSON.parse(localStorage.getItem('usernames')) || []
     localStorage.setItem('usernames', usernames.value)
     localStorage.setItem('scores', timeleft)
     let displayScores = document.getElementById('displayScores')
     let highscoreElem = document.createElement(`div`)
-    
-    scores.push(new scores)
-    localStorage.setItem('scores', scores) // overwrite old scores with new scores
+    let scores = JSON.parse(localStorage.getItem('scores')) || []
+    let usernames = JSON.parse(localStorage.getItem('usernames')) || []
     highscore.innerHTML = `
     <h1>${usernames.value}</h1>
     <h1>${scores}</h1>
     `
+    scores.push(new score)
+    localStorage.setItem('scores', scores) // overwrite old scores with new scores
     displayScores.classList.remove('hide')
     })
   
