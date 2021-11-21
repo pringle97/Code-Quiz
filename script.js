@@ -134,6 +134,6 @@ function endQuiz() {
   question.classList.add('hide')
 }
 
-const username = document.getElementById('username')
-localStorage.setItem('username', username.value)
-localStorage.setItem('score', downloadTimer.value)
+function submitScore(params) {
+  
+}
