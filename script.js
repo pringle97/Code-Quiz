@@ -144,27 +144,22 @@ function endQuiz() {
 
 let scores = JSON.parse(localStorage.getItem('scores')) || []
 let usernames = JSON.parse(localStorage.getItem('usernames')) || []
-const submitScore = document.getElementById('submitScore')
 
-document.getElementById('submitScore').addEventListener('click', event => {
-  event.preventDefault()
-  let username = document.getElementById('username')
-  localStorage.setItem('usernames', username)
-  localStorage.setItem('scores', timeleft)
-  let displayScores = document.getElementById('displayScores')
-  let highscoreElem = document.createElement(`div`)
-
-  highscore.innerHTML = `
+const submitScore = document.getElementById('submitScore') 
+  document.getElementById('submitScore').addEventListener('click', event => {
+    event.preventDefault()
+    let username = document.getElementById('username')
+    localStorage.setItem('username', usernames.value)
+    localStorage.setItem('scores', timeleft)
+    let displayScores = document.getElementById('displayScores')
+    let highscoreElem = document.createElement(`div`) 
+    highscore.innerHTML = `
     <h1>${usernames.value}</h1>
     <h1>${scores}</h1>
     `
-  scores.push({
-    usernames: usernames.value,
-    scores: scores
+    scores.push(new score)
+    localStorage.setItem('scores', scores) // overwrite old scores with new scores
+    displayScores.classList.remove('hide')
   })
-  localStorage.setItem('scores', scores) // overwrite old scores with new scores
-  displayScores.classList.remove('hide')
-})
-
 
 
