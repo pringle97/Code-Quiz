@@ -134,6 +134,14 @@ function endQuiz() {
   question.classList.add('hide')
 }
 
-function submitScore(params) {
-  
+function submitScore() {
+  document.getElementById('submitScore').addEventListener('click', event => {
+  event.preventDefault()
+  let username = JSON.parse(localStorage.setItem('username')) || []
+  localStorage.setItem('username', username.value)
+  localStorage.setItem('score', JSON.stringify(downloadTimer))
+  let scores = JSON.parse(localStorage.getItem('scores')) || []
+  document.getElementById('addScores').style.display = 'none'
+  document.getElementById('displayScores').style.display = 'block'
+})
 }
