@@ -1,3 +1,4 @@
+let gameStarted = false
 //building the questions part of quiz
 const questions = [
   {
@@ -53,6 +54,9 @@ nextButton.addEventListener('click', () => {
 
 let timeleft = 60;
 const timer = () => {
+  if (!gameStarted) {
+    return;
+  }
   document.getElementById("countdown").innerHTML = timeleft +
     "&nbsp" + "seconds remaining";
   timeleft -= 1;
@@ -66,6 +70,7 @@ startButton.addEventListener('click', startGame)
 
 //making startgame actually start the quiz, hides start button and removing hide shows the questions
 function startGame() {
+  gameStarted = true
   startButton.classList.add('hide')
   // shuffles questions to get a random one 
   shuffledQuestions = questions.sort(() => Math.random() - .5)
@@ -120,6 +125,9 @@ function selectAnswer(e) {
   Array.from(answerButtonsElement.children).forEach(button => {
     setStatusClass(button, button.dataset.correct)
   })
+  if (!correct) {
+    timeleft = timeleft - 5;
+  }
   nextButton.classList.remove('hide')
 }
 
@@ -134,12 +142,21 @@ function endQuiz() {
   question.classList.add('hide')
 }
 
-function submitScore() {
+const submitScore = document.getElementById('submitScore') 
   document.getElementById('submitScore').addEventListener('click', event => {
     event.preventDefault()
+    let score = JSON.parse(localStorage.getItem('score')) || []
     let username = document.getElementById('username')
     localStorage.setItem('username', username.value)
-    localStorage.setItem('score', timeleft.value)
-  })
-}
+    localStorage.setItem('score', timeleft)
+    let displayScores = document.getElementById('displayScores')
+    let highscoreElem = document.createElement(`div`)
+    highscore.innerHTML = `
+    <h1>${username.value}</h1>
+    <h1>${score.value}</h1>
+    `
+    displayScores.classList.remove('hide')
+    })
+  
+
 
