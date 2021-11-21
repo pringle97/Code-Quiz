@@ -106,9 +106,9 @@ function resetState() {
 function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
-    element.classList.add('correct')  
+    element.classList.add('correct')
   } else {
-    element.classList.add('wrong')  
+    element.classList.add('wrong')
   }
 }
 
@@ -118,8 +118,8 @@ function selectAnswer(e) {
   const correct = selectedButton.dataset.correct
   setStatusClass(document.body, correct)
   Array.from(answerButtonsElement.children).forEach(button => {
-    setStatusClass(button, button.dataset.correct)  
-  }) 
+    setStatusClass(button, button.dataset.correct)
+  })
   nextButton.classList.remove('hide')
 }
 
@@ -134,3 +134,19 @@ function endQuiz() {
   question.classList.add('hide')
 }
 
+let scores = JSON.parse(localStorage.getItem('scores')) || []
+document.getElementById('submitScore').addEventListener('click', event => {
+  event.preventDefault()
+  const record = {
+    username: document.getElementById('username').value,
+    score: points
+  }
+  scores.push(record)
+  localStorage.setItem('scores', JSON.stringify(scores))
+  document.getElementById('addScores').style.display = 'none'
+  scores.forEach(score => {
+    let scoreElem = document.createElement('div')
+    scoreElem.innerHTML = `<h6>Username: ${score.username} | Score: ${score.score}</h6><hr>`
+    document.getElementById('displayScores').append(scoreElem)
+  })
+  points = 0
