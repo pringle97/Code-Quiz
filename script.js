@@ -143,7 +143,7 @@ function endQuiz() {
 }
 
 let scores = JSON.parse(localStorage.getItem('scores')) || []
-let usernames = JSON.parse(localStorage.getItem('usernames')) || []
+let usernames = JSON.parse(localStorage.getItem('usernames')) || [];
 
 const submitScore = document.getElementById('submitScore') 
   document.getElementById('submitScore').addEventListener('click', event => {
@@ -157,9 +157,8 @@ const submitScore = document.getElementById('submitScore')
     <h1>${usernames.value}</h1>
     <h1>${scores}</h1>
     `
-    scores.push(new score)
-    localStorage.setItem('scores', scores) // overwrite old scores with new scores
     displayScores.classList.remove('hide')
-  })
+    })
+  
 
 
