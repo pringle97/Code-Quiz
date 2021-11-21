@@ -145,15 +145,19 @@ function endQuiz() {
 const submitScore = document.getElementById('submitScore') 
   document.getElementById('submitScore').addEventListener('click', event => {
     event.preventDefault()
-    let username = document.getElementById('username')
-    localStorage.setItem('username', username.value)
-    localStorage.setItem('score', timeleft)
+    // let usernames = document.getElementById('usernames')
+    let scores = JSON.parse(localStorage.getItem('scores')) || []
+    let usernames = JSON.parse(localStorage.getItem('usernames')) || []
+    localStorage.setItem('usernames', usernames.value)
+    localStorage.setItem('scores', timeleft)
     let displayScores = document.getElementById('displayScores')
     let highscoreElem = document.createElement(`div`)
-    let score = JSON.parse(localStorage.getItem('score')) || []
+    
+    scores.push(new scores)
+    localStorage.setItem('scores', scores) // overwrite old scores with new scores
     highscore.innerHTML = `
-    <h1>${username.value}</h1>
-    <h1>${score}</h1>
+    <h1>${usernames.value}</h1>
+    <h1>${scores}</h1>
     `
     displayScores.classList.remove('hide')
     })
