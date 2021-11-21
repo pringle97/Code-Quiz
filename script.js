@@ -143,18 +143,18 @@ function endQuiz() {
 }
 
 let scores = JSON.parse(localStorage.getItem('scores')) || []
-let usernames = JSON.parse(localStorage.getItem('usernames')) || [];
+let usernameArray = JSON.parse(localStorage.getItem('usernameArray')) || [];
 
 const submitScore = document.getElementById('submitScore') 
   document.getElementById('submitScore').addEventListener('click', event => {
     event.preventDefault()
     let username = document.getElementById('username')
-    localStorage.setItem('usernames', username.value)
+    localStorage.setItem('usernameArray', username.value)
     localStorage.setItem('scores', timeleft)
     let displayScores = document.getElementById('displayScores')
     let highscoreElem = document.createElement(`div`) 
     highscore.innerHTML = `
-    <h1>${usernames.value}</h1>
+    <h1>${usernameArray.value}</h1>
     <h1>${scores}</h1>
     `
     displayScores.classList.remove('hide')
