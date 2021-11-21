@@ -137,7 +137,7 @@ function endQuiz() {
 function submitScore() {
   document.getElementById('submitScore').addEventListener('click', event => {
   event.preventDefault()
-  let username = JSON.parse(localStorage.setItem('username')) || []
+  let username = document.getElementById('username')
   localStorage.setItem('username', username.value)
   localStorage.setItem('score', timeleft.value)
 })
