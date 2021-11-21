@@ -145,15 +145,15 @@ function endQuiz() {
 const submitScore = document.getElementById('submitScore') 
   document.getElementById('submitScore').addEventListener('click', event => {
     event.preventDefault()
-    let score = JSON.parse(localStorage.getItem('score')) || []
     let username = document.getElementById('username')
     localStorage.setItem('username', username.value)
     localStorage.setItem('score', timeleft)
     let displayScores = document.getElementById('displayScores')
     let highscoreElem = document.createElement(`div`)
+    let score = JSON.parse(localStorage.getItem('score')) || []
     highscore.innerHTML = `
     <h1>${username.value}</h1>
-    <h1>${score.value}</h1>
+    <h1>${score}</h1>
     `
     displayScores.classList.remove('hide')
     })
