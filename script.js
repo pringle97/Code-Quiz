@@ -149,7 +149,7 @@ const submitScore = document.getElementById('submitScore')
   document.getElementById('submitScore').addEventListener('click', event => {
     event.preventDefault()
     let username = document.getElementById('username')
-    localStorage.setItem('username', usernames.value)
+    localStorage.setItem('usernames', username.value)
     localStorage.setItem('scores', timeleft)
     let displayScores = document.getElementById('displayScores')
     let highscoreElem = document.createElement(`div`) 
