@@ -139,9 +139,7 @@ function submitScore() {
   event.preventDefault()
   let username = JSON.parse(localStorage.setItem('username')) || []
   localStorage.setItem('username', username.value)
-  localStorage.setItem('score', JSON.stringify(downloadTimer))
-  let scores = JSON.parse(localStorage.getItem('scores')) || []
-  document.getElementById('addScores').style.display = 'none'
-  document.getElementById('displayScores').style.display = 'block'
+  localStorage.setItem('score', timeleft.value)
 })
 }
+
