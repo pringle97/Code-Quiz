@@ -159,4 +159,9 @@ const submitScore = document.getElementById('submitScore')
     })
   
 
+//before using localstorage.setItem, you add the new values to the arrays and change your submit score function to add your scores to the existing arrays
+//then .setItem saves the array instead of the score itself
+//push
+//let scores = JSON.parse(localStorage.getItem('scores')) || [];
+//let usernames = JSON.parse(localStorage.getItem('usernames')) || [];
 
