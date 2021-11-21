@@ -150,10 +150,9 @@ const submitScore = document.getElementById('submitScore')
     localStorage.setItem('score', timeleft)
     let displayScores = document.getElementById('displayScores')
     let highscoreElem = document.createElement(`div`)
-    let usernames = JSON.parse(localStorage.getItem('username')) || []
     let score = JSON.parse(localStorage.getItem('score')) || []
     highscore.innerHTML = `
-    <h1>${usernames}</h1>
+    <h1>${username.value}</h1>
     <h1>${score}</h1>
     `
     displayScores.classList.remove('hide')
